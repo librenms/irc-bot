@@ -9,4 +9,6 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/.
 
-LICENSE.txt contains a copy of the full GPLv3 licensing conditions.
+[LICENSE.txt][1] contains a copy of the full GPLv3 licensing conditions.
+
+[1]: https://github.com/librenms/irc-bot/tree/master/LICENSE.txt
