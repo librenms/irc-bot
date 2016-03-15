@@ -16,7 +16,7 @@ module.exports = (robot) ->
       .get() (err, res, body) ->
         json   = JSON.parse(body)
         behind = json['behind_by']
-        msg.send "#{compare}"
+        msg.send "#{err}"
         if behind > 0
           msg.send "You are behind by #{behind} commits"
         else
