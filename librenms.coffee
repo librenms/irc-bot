@@ -19,3 +19,10 @@ module.exports = (robot) ->
   robot.hear /(.*) validate your install/i, (msg) ->
     user = msg.match[1]
     msg.send "#{user} to validate your install run ./validate.php"
+  robot.hear /(good|awesome|cool|sexy) bot/i, (msg) ->
+    msg.reply "Aw, thanks :)"
+  robot.hear /(bad|silly|stupid|lame|crap) bot/i, (msg) ->
+    msg.reply "Why so mean :("
+  robot.hear /(flip|flipping) tables/i, (msg) ->
+    msg.send "AGHHHHHHHHHHH"
+    msg.send "(╯°□°）╯︵ ┻━┻"
