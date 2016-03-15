@@ -1,5 +1,5 @@
 module.exports = (robot) ->
-  robot.respond /latest version/i, (msg) ->
+  robot.respond /latest (version|commit)/i, (msg) ->
     github = "https://api.github.com/repos/librenms/librenms/"
     msg.http("#{github}branches/master")
       .get() (err, res, body) ->
