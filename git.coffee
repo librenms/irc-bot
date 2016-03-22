@@ -8,15 +8,18 @@ module.exports = (robot) ->
         message  = json['commit']['commit']['message']
         date     = json['commit']['commit']['author']['date']
         msg.send "Latest commit is #{sha} (#{message}) at #{date}"
-  robot.respond /compare (.*)/i, (msg) ->
-    sha = msg.match[1]
+  robot.respond /compare (version|commit|[ ]*)([ ]*)(.*)/i, (msg) ->
+    sha = msg.match[3]
     msg.send "Checking SHA #{sha}"
     compare = "#{github}compare/master...#{sha}"
     msg.http(compare)
       .get() (err, res, body) ->
         json   = JSON.parse(body)
         behind = json['behind_by']
-        if behind > 0
+        message = json['message']
+        if message is "Not Found"
+          msg.send "That commit doesn't appear to be one of ours"
+        else if behind > 0
           msg.send "You are behind by #{behind} commits"
         else
           msg.send "You seem to be upto date, nice work :)"
