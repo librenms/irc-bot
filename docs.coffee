@@ -12,6 +12,8 @@ module.exports = (robot) ->
       oxidized: "/Extensions/Oxidized/"
       smokeping: "/Extensions/Smokeping/"
       services: "/Extensions/Services/"
+      performance: "/Support/Performance/"
+      faq: "/Support/FAQ/"
     if wanted and docs[wanted]
       selected = docs[wanted]
       msg.send "Are you looking for: #{service}#{selected}"
