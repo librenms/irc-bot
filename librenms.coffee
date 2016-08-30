@@ -1,5 +1,7 @@
 module.exports = (robot) ->
   github = "https://github.com/librenms/librenms"
+  channel = "##librenms"
+  nick = process.env.HUBOT_IRC_NICK
   robot.respond /team/i, (msg) ->
     msg.send "blahdeblah, laf, f0o, Rosiak, SaaldjorMike, murrant"
   robot.hear /creat(e|ing) an issue/i, (msg) ->
@@ -26,3 +28,6 @@ module.exports = (robot) ->
   robot.hear /(flip|flipping) tables/i, (msg) ->
     msg.send "AGHHHHHHHHHHH"
     msg.send "(╯°□°）╯︵ ┻━┻"
+  robot.hear /(.*)allah is doing(.*)/i, (msg) ->
+    user = msg.message.user.name
+    robot.adapter.command "KICK", channel, user, nick, "Not here!"
