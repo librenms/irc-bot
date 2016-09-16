@@ -2,8 +2,9 @@ module.exports = (robot) ->
   github = "https://github.com/librenms/librenms"
   channel = "##librenms"
   nick = process.env.HUBOT_IRC_NICK
+  moderators = ["blahdeblah", "f0o", "laf", "murrant", "Rosiak", "SaaldjorMike"]
   robot.respond /team/i, (msg) ->
-    msg.send "blahdeblah, laf, f0o, Rosiak, SaaldjorMike, murrant"
+    msg.send "blahdeblah, f0o, laf, murrant , Rosiak, SaaldjorMike"
   robot.hear /creat(e|ing) an issue/i, (msg) ->
     msg.send "You can create an issue on github: #{github}/issues"
   robot.hear /(poller|discovery) (.*)([ ]*)debug/i, (msg) ->
@@ -31,3 +32,12 @@ module.exports = (robot) ->
   robot.hear /(.*)allah is doing(.*)/i, (msg) ->
     user = msg.message.user.name
     robot.adapter.command "KICK", channel, user, nick, "Not here!"
+  robot.enter (msg) ->
+    user = msg.message.user.name
+    if user in moderators
+      robot.adapter.command 'MODE', msg.message.user.room, '+o', user
+  robot.respond /op me/i, (msg) ->
+    user = msg.message.user.name
+    if user in moderators
+      robot.adapter.command 'MODE', msg.message.user.room, '+o', user
+    
