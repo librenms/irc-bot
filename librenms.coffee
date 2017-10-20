@@ -31,3 +31,9 @@ module.exports = (robot) ->
   robot.hear /(.*)allah is doing(.*)/i, (msg) ->
     user = msg.message.user.name
     robot.adapter.command "KICK", channel, user, nick, "Not here!"
+  robot.hear /^kitty$/i, (msg) ->
+    user = msg.message.user.name
+    msg.reply "#{user}: here's a kitty http://thecatapi.com/api/images/get?format=src&type=gif"
+
+    
+    
